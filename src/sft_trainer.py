@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-20 22:31:31
+LastEditTime: 2024-04-20 23:21:11
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -12,6 +12,10 @@ from datasets import load_dataset
 from peft import LoraConfig, get_peft_model
 from trl import SFTTrainer
 from accelerate import PartialState
+
+from warnings import filterwarnings
+
+filterwarnings("ignore")
 
 train_setting = safe_load(open("train_setting.yaml"))
 
