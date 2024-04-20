@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-20 19:24:35
+LastEditTime: 2024-04-20 22:31:31
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -56,5 +56,7 @@ trainer.train()
 
 print("Save model")
 trainer.save_model()
+
+print(model)
 
 print("Finish training")

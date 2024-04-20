@@ -10,7 +10,7 @@ dataset:
   split: "train"
 
 model:
-  name: "mistralai/Mistral-7B-v0.1"
+  name: "openai-community/gpt2-large"
 
 training_args:
   output_dir: "output"
