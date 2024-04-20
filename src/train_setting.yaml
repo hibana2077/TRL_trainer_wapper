@@ -6,7 +6,7 @@ lora_config:
   task_type: "CAUSAL_LM"
 
 dataset:
-  name: "NTTUNLPTEAM/class-text"
+  name: "NTTUNLPTEAM/class-textbook"
   split: "train"
 
 model:
