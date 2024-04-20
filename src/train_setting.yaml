@@ -10,7 +10,7 @@ dataset:
   split: "train"
 
 model:
-  name: "openai-community/gpt2-large"
+  name: "openai-community/gpt2"
 
 training_args:
   output_dir: "output"
