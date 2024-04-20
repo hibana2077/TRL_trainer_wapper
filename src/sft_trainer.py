@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-20 19:01:23
+LastEditTime: 2024-04-20 19:02:34
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -46,7 +46,7 @@ traine_args = TrainingArguments(
 trainer = SFTTrainer(
     model,
     train_dataset=dataset,
-    dataset_text_field=train_setting['dataset']['text_field'],
+    dataset_text_field=train_setting['trainer']['dataset_text_field'],
     max_seq_length=int(train_setting['trainer']['max_seq_length']),
     tokenizer=tokenizer,
     args=traine_args
