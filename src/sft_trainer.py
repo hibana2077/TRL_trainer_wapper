@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-20 19:00:17
+LastEditTime: 2024-04-20 19:01:23
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -31,9 +31,9 @@ peft_config = LoraConfig(
     bias=str(train_setting['lora_config']['bias']),
     task_type=str(train_setting['lora_config']['task_type']),
 )
-model = get_peft_model(model, peft_config) if train_setting['fine_tune']['method'] == 'peft' else model
+model = get_peft_model(model, peft_config) if train_setting['fine_tuning']['method'] == 'peft' else model
 
-print("LoRA method can't be used in to mergekit. Please use the full-finetuning method.") if train_setting['fine_tune']['method'] == 'peft' else None
+print("LoRA method can't be used in to mergekit. Please use the full-finetuning method.") if train_setting['fine_tuning']['method'] == 'peft' else None
 
 traine_args = TrainingArguments(
     output_dir=train_setting['training_args']['output_dir'],
