@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-20 18:41:31
+LastEditTime: 2024-04-20 19:00:17
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -25,11 +25,11 @@ model = AutoModelForCausalLM.from_pretrained(train_setting['model']['name'],
 tokenizer = AutoTokenizer.from_pretrained(train_setting['model']['name'])
 
 peft_config = LoraConfig(
-    r=int(train_setting['peft']['r']),
-    lora_alpha=int(train_setting['peft']['lora_alpha']),
-    lora_dropout=float(train_setting['peft']['lora_dropout']),
-    bias=str(train_setting['peft']['bias']),
-    task_type=str(train_setting['peft']['task_type']),
+    r=int(train_setting['lora_config']['r']),
+    lora_alpha=int(train_setting['lora_config']['lora_alpha']),
+    lora_dropout=float(train_setting['lora_config']['lora_dropout']),
+    bias=str(train_setting['lora_config']['bias']),
+    task_type=str(train_setting['lora_config']['task_type']),
 )
 model = get_peft_model(model, peft_config) if train_setting['fine_tune']['method'] == 'peft' else model
 
