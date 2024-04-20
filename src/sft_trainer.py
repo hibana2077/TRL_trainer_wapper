@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-20 19:05:14
+LastEditTime: 2024-04-20 19:24:35
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -22,11 +22,6 @@ dataset = load_dataset(train_setting['dataset']['name'], split=train_setting['da
 
 model = AutoModelForCausalLM.from_pretrained(train_setting['model']['name'],
                                              device_map={'':device_string})
-tokenizer = AutoTokenizer.from_pretrained(train_setting['model']['name'])
-
-# add pad token to tokenizer
-tokenizer.pad_token = tokenizer.eos_token
-tokenizer.add_special_tokens({'pad_token': '[PAD]'})
 
 peft_config = LoraConfig(
     r=int(train_setting['lora_config']['r']),
@@ -52,9 +47,9 @@ trainer = SFTTrainer(
     train_dataset=dataset,
     dataset_text_field=train_setting['trainer']['dataset_text_field'],
     max_seq_length=int(train_setting['trainer']['max_seq_length']),
-    tokenizer=tokenizer,
     args=traine_args
 )
+# we don't pass the tokenizer to the trainer, because it will automatically use original tokenizer of the model
 
 print("Start training")
 trainer.train()
