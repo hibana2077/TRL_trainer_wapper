@@ -23,8 +23,5 @@ trainer:
   dataset_text_field: "text"
   max_seq_length: 512
 
-save_model:
-  output_dir: "output"
-
 fine_tuning:
   method: "lora" # "lora" or "full"
