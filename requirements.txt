@@ -1,0 +1,11 @@
+transformers
+accelerate
+peft
+datasets
+accelerate
+evaluate
+loralib
+rouge-score
+py7zr
+trl
+pyyaml
