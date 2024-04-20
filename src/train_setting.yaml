@@ -16,7 +16,7 @@ training_args:
   output_dir: "output"
   per_device_train_batch_size: 1
   gradient_accumulation_steps: 4
-  learning_rate: 5e-5
+  learning_rate: 0.00005
   logging_steps: 100
 
 trainer:
