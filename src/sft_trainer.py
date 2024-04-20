@@ -2,9 +2,9 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-20 16:57:38
+LastEditTime: 2024-04-20 18:30:14
 FilePath: /2024_president/ml/sft_train.py
-Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+Description:
 '''
 from yaml import safe_load
 from transformers import AutoModelForCausalLM, TrainingArguments, AutoTokenizer
@@ -31,7 +31,7 @@ peft_config = LoraConfig(
     bias=str(train_setting['peft']['bias']),
     task_type=str(train_setting['peft']['task_type']),
 )
-model = get_peft_model(model, peft_config)
+model = get_peft_model(model, peft_config) if train_setting['fine_tune']['method'] == 'peft' else model
 
 traine_args = TrainingArguments(
     output_dir=train_setting['training_args']['output_dir'],
@@ -52,3 +52,8 @@ trainer = SFTTrainer(
 
 print("Start training")
 trainer.train()
+
+print("Save model")
+trainer.save_model()
+
+print("Finish training")
