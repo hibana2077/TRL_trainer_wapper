@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-21 08:53:43
+LastEditTime: 2024-04-25 10:05:45
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -24,11 +24,12 @@ device_string = PartialState().process_index
 print(f"Device: {device_string}")
 
 # Load dataset
-dataset = load_dataset(train_setting['dataset']['name'], split=train_setting['dataset']['split'])
+dataset = load_dataset(train_setting['dataset']['name'], split=train_setting['dataset']['split'],token=train_setting['api_tokens']['huggingface'])
 
 # Load model
 model = AutoModelForCausalLM.from_pretrained(train_setting['model']['name'],
-                                             device_map={'': device_string})
+                                             device_map={'': device_string},
+                                             token=train_setting['api_tokens']['huggingface'])
 
 # Configure LoRA if fine-tuning method is 'lora'
 if train_setting['fine_tuning']['method'] == 'lora':

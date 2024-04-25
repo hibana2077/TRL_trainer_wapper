@@ -12,6 +12,9 @@ dataset:
 model:
   name: "openai-community/gpt2"
 
+api_tokens:
+  huggingface: "YOUR_HUGGINGFACE_API_TOKEN"
+
 training_args:
   output_dir: "output"
   per_device_train_batch_size: 1
