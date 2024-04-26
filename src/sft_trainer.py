@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-26 18:00:03
+LastEditTime: 2024-04-26 18:40:01
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -75,7 +75,7 @@ print("Save model")
 trainer.save_model()
 
 # Upload model to Hugging Face Model Hub
-# TBD
+trainer.push_to_hub()
 
 # Finish training
 print("Finish training")
