@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-26 18:40:01
+LastEditTime: 2024-04-26 18:57:16
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -25,6 +25,8 @@ print(f"Device: {device_string}")
 
 # Load dataset
 dataset = load_dataset(train_setting['dataset']['name'], split=train_setting['dataset']['split'],token=train_setting['api_tokens']['huggingface'])
+
+print(dataset[train_setting['trainer']['dataset_text_field']])
 
 # Load model
 model = AutoModelForCausalLM.from_pretrained(train_setting['model']['name'],
