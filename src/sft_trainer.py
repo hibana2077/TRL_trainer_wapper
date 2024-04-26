@@ -2,12 +2,12 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-26 18:58:36
+LastEditTime: 2024-04-26 19:16:44
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
 from yaml import safe_load
-from transformers import AutoModelForCausalLM, TrainingArguments, AutoTokenizer
+from transformers import AutoModelForCausalLM, TrainingArguments
 from datasets import load_dataset
 from peft import LoraConfig, get_peft_model
 from trl import SFTTrainer
@@ -26,7 +26,8 @@ print(f"Device: {device_string}")
 # Load dataset
 dataset = load_dataset(train_setting['dataset']['name'], split=train_setting['dataset']['split'],token=train_setting['api_tokens']['huggingface'])
 
-print(type(dataset[train_setting['trainer']['dataset_text_field']]))
+# change data type to string
+dataset = dataset.map(lambda x: {train_setting['trainer']['dataset_text_field']: str(x[train_setting['trainer']['dataset_text_field']])})
 
 # Load model
 model = AutoModelForCausalLM.from_pretrained(train_setting['model']['name'],
