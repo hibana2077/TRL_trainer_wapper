@@ -73,5 +73,8 @@ trainer.train()
 print("Save model")
 trainer.save_model()
 
+# Upload model to Hugging Face Model Hub
+# TBD
+
 # Finish training
 print("Finish training")
