@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-25 10:05:45
+LastEditTime: 2024-04-26 18:00:03
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -32,17 +32,18 @@ model = AutoModelForCausalLM.from_pretrained(train_setting['model']['name'],
                                              token=train_setting['api_tokens']['huggingface'])
 
 # Configure LoRA if fine-tuning method is 'lora'
-if train_setting['fine_tuning']['method'] == 'lora':
-    peft_config = LoraConfig(
-        r=int(train_setting['lora_config']['r']),
-        lora_alpha=int(train_setting['lora_config']['lora_alpha']),
-        lora_dropout=float(train_setting['lora_config']['lora_dropout']),
-        bias=str(train_setting['lora_config']['bias']),
-        task_type=str(train_setting['lora_config']['task_type']),
-    )
-    model = get_peft_model(model, peft_config)
-    print("LoRA method can't be used in to mergekit. Please use the full-finetuning method.")
-    print(model)
+if 'fine_tuning' in train_setting and 'method' in train_setting['fine_tuning'] and train_setting['fine_tuning']['method'] == 'lora':
+    if 'lora_config' in train_setting:
+        peft_config = LoraConfig(
+            r=int(train_setting['lora_config'].get('r', 0)),
+            lora_alpha=int(train_setting['lora_config'].get('lora_alpha', 0)),
+            lora_dropout=float(train_setting['lora_config'].get('lora_dropout', 0.0)),
+            bias=str(train_setting['lora_config'].get('bias', '')),
+            task_type=str(train_setting['lora_config'].get('task_type', '')),
+        )
+        model = get_peft_model(model, peft_config)
+        print("LoRA method can't be used in to mergekit. Please use the full-finetuning method.")
+        print(model)
 else:
     print(model)
 
