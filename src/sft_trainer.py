@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-26 19:16:44
+LastEditTime: 2024-04-27 16:57:48
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -12,12 +12,15 @@ from datasets import load_dataset
 from peft import LoraConfig, get_peft_model
 from trl import SFTTrainer
 from accelerate import PartialState
-
+from os import environ
 from warnings import filterwarnings
 
 filterwarnings("ignore")
 # Load train settings from YAML file
 train_setting = safe_load(open("train_setting.yaml"))
+
+# Set env
+environ['HF_HOME'] = train_setting['api_tokens']['huggingface']
 
 # Get device string
 device_string = PartialState().process_index
@@ -57,6 +60,7 @@ training_args = TrainingArguments(
     gradient_accumulation_steps=int(train_setting['training_args']['gradient_accumulation_steps']),
     learning_rate=float(train_setting['training_args']['learning_rate']),
     logging_steps=int(train_setting['training_args']['logging_steps']),
+    push_to_hub=train_setting['training_args']['push_to_hub'],
 )
 
 # Create SFTTrainer instance

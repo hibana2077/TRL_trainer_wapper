@@ -16,11 +16,12 @@ api_tokens:
   huggingface: "YOUR_HUGGINGFACE_API_TOKEN"
 
 training_args:
-  output_dir: "output"
+  output_dir: "Test-model"
   per_device_train_batch_size: 1
   gradient_accumulation_steps: 4
   learning_rate: 0.00005
   logging_steps: 100
+  push_to_hub: True
 
 trainer:
   dataset_text_field: "text"
