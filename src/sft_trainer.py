@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-04-27 16:57:48
+LastEditTime: 2024-04-28 20:04:08
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -20,7 +20,7 @@ filterwarnings("ignore")
 train_setting = safe_load(open("train_setting.yaml"))
 
 # Set env
-environ['HF_HOME'] = train_setting['api_tokens']['huggingface']
+environ['HF_TOKEN'] = train_setting['api_tokens']['huggingface']
 
 # Get device string
 device_string = PartialState().process_index
@@ -61,9 +61,11 @@ training_args = TrainingArguments(
     learning_rate=float(train_setting['training_args']['learning_rate']),
     logging_steps=int(train_setting['training_args']['logging_steps']),
     push_to_hub=train_setting['training_args']['push_to_hub'],
+    push_to_hub_organization=train_setting['training_args']['push_to_organization'],
 )
 
 # Create SFTTrainer instance
+
 trainer = SFTTrainer(
     model,
     train_dataset=dataset,
