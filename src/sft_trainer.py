@@ -60,7 +60,7 @@ training_args = TrainingArguments(
     gradient_accumulation_steps=int(train_setting['training_args']['gradient_accumulation_steps']),
     learning_rate=float(train_setting['training_args']['learning_rate']),
     logging_steps=int(train_setting['training_args']['logging_steps']),
-    save_total_limit=2,
+    save_total_limit=1,
     push_to_hub=train_setting['training_args']['push_to_hub'],
     push_to_hub_organization=train_setting['training_args']['push_to_organization'] if 'push_to_organization' != '' else None,
 )
