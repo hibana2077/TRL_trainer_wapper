@@ -25,7 +25,12 @@ training_args:
   push_to_organization: "ORGANIZATION_NAME" # if you don't want to push to an organization, set it to ""
 
 trainer:
-  dataset_text_field: "text"
+  sft:
+    dataset_text_field: "text"
+  dpo:
+    dataset_prompt_field: "prompt"
+    dataset_chosen_field: "chosen"
+    dataset_rejected_field: "rejected"
   max_seq_length: 512
 
 fine_tuning:
