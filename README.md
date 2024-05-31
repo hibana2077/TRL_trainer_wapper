@@ -2,11 +2,15 @@
  * @Author: hibana2077 hibana2077@gmail.com
  * @Date: 2024-04-20 10:54:54
  * @LastEditors: hibana2077 hibana2077@gmail.com
- * @LastEditTime: 2024-04-20 11:19:20
+ * @LastEditTime: 2024-05-31 13:19:11
  * @FilePath: \TRL_trainer_wapper\README.md
  * @Description: 
 -->
 # TRL trainer wapper
+
+<p align="center">
+    <img src="https://skillicons.dev/icons?i=pytorch,py,docker" /><br>
+</p>
 
 This is a simple tool for using TRL to training a Large Language Model (LLM) on cloud GPUs.
 
