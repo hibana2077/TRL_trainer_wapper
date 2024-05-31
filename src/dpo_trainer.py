@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-05-01 09:35:08
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-05-31 11:16:46
+LastEditTime: 2024-05-31 17:32:21
 FilePath: \TRL_trainer_wapper\src\dpo_trainer.py
 Description: 
 '''
