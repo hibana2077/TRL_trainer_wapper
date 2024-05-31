@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-05-01 09:31:45
+LastEditTime: 2024-05-31 10:48:55
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -34,7 +34,7 @@ dataset = dataset.map(lambda x: {train_setting['trainer']['dataset_text_field']:
 
 # Load model
 model = AutoModelForCausalLM.from_pretrained(train_setting['model']['name'],
-                                             device_map={'': device_string},
+                                             device_map='auto',
                                              token=train_setting['api_tokens']['huggingface'])
 
 # Configure LoRA if fine-tuning method is 'lora'
