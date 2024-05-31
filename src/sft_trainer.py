@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-05-31 10:48:55
+LastEditTime: 2024-05-31 10:57:58
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -30,7 +30,7 @@ print(f"Device: {device_string}")
 dataset = load_dataset(train_setting['dataset']['name'], split=train_setting['dataset']['split'],token=train_setting['api_tokens']['huggingface'])
 
 # change data type to string
-dataset = dataset.map(lambda x: {train_setting['trainer']['dataset_text_field']: str(x[train_setting['trainer']['dataset_text_field']])})
+dataset = dataset.map(lambda x: {train_setting['trainer']['sft']['dataset_text_field']: str(x[train_setting['trainer']['sft']['dataset_text_field']])})
 
 # Load model
 model = AutoModelForCausalLM.from_pretrained(train_setting['model']['name'],
