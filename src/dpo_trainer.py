@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-05-01 09:35:08
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-05-31 10:54:45
+LastEditTime: 2024-05-31 11:16:46
 FilePath: \TRL_trainer_wapper\src\dpo_trainer.py
 Description: 
 '''
@@ -31,7 +31,9 @@ print(f"Device: {device_string}")
 dataset = load_dataset(train_setting['dataset']['name'], split=train_setting['dataset']['split'],token=train_setting['api_tokens']['huggingface'])
 
 # change data type to string
-dataset = dataset.map(lambda x: {train_setting['trainer']['dataset_text_field']: str(x[train_setting['trainer']['dataset_text_field']])})
+dataset = dataset.map(lambda x: {train_setting['trainer']['dpo']['dataset_prompt_field']: str(x[train_setting['trainer']['dpo']['dataset_prompt_field']])})
+dataset = dataset.map(lambda x: {train_setting['trainer']['dpo']['dataset_chosen_field']: str(x[train_setting['trainer']['dpo']['dataset_chosen_field']])})
+dataset = dataset.map(lambda x: {train_setting['trainer']['dpo']['dataset_rejected_field']: str(x[train_setting['trainer']['dpo']['dataset_rejected_field']])})
 
 # Load model
 model = AutoModelForCausalLM.from_pretrained(train_setting['model']['name'],
