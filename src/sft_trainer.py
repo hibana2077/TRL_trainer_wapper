@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2024-04-17 15:26:22
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-05-31 10:57:58
+LastEditTime: 2024-05-31 17:37:52
 FilePath: /2024_president/ml/sft_train.py
 Description:
 '''
@@ -61,6 +61,7 @@ training_args = TrainingArguments(
     learning_rate=float(train_setting['training_args']['learning_rate']),
     logging_steps=int(train_setting['training_args']['logging_steps']),
     save_total_limit=1,
+    num_train_epochs=int(train_setting['training_args']['num_train_epochs']),
     push_to_hub=train_setting['training_args']['push_to_hub'],
     push_to_hub_organization=train_setting['training_args']['push_to_organization'] if 'push_to_organization' != '' else None,
 )

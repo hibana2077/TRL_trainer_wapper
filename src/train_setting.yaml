@@ -22,6 +22,7 @@ training_args:
   learning_rate: 0.00005
   logging_steps: 100
   push_to_hub: True
+  num_train_epochs: 3
   push_to_organization: "ORGANIZATION_NAME" # if you don't want to push to an organization, set it to ""
 
 trainer:

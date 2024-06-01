@@ -2,7 +2,7 @@
 Author: hibana2077 hibana2077@gmail.com
 Date: 2024-05-01 09:35:08
 LastEditors: hibana2077 hibana2077@gmail.com
-LastEditTime: 2024-05-31 17:32:21
+LastEditTime: 2024-06-01 11:00:06
 FilePath: \TRL_trainer_wapper\src\dpo_trainer.py
 Description: 
 '''
@@ -64,6 +64,7 @@ training_args = TrainingArguments(
     learning_rate=float(train_setting['training_args']['learning_rate']),
     logging_steps=int(train_setting['training_args']['logging_steps']),
     save_total_limit=1,
+    num_train_epochs=int(train_setting['training_args']['num_train_epochs']),
     push_to_hub=train_setting['training_args']['push_to_hub'],
     push_to_hub_organization=train_setting['training_args']['push_to_organization'] if 'push_to_organization' != '' else None,
 )
